@@ -12,6 +12,7 @@ public class PhysicalObject {
 	private int CanX,CanY;
 	
 	private BufferedImage img;
+	
 	private double realSizeX;
 	private double realSizeY;
 	private String Descr;
@@ -25,6 +26,10 @@ public class PhysicalObject {
 		this.Descr = dsc;
 	}
 
+	public void setRealPos(vec2d pos){
+		this.realPositionofTheCenter = new vec2d(pos.vx,pos.vy);
+	}
+	
 	//canvas center is at physical (0,0) - focal point
 	public void drawMe(Graphics g, double expscale){
 		if (this.shouldTryToDrawThisImage(expscale)){
@@ -70,6 +75,10 @@ public class PhysicalObject {
 		return value;
 	}
 	
+	
+	public double getYXratio(){
+		return ((double)this.img.getWidth()) / ((double)this.img.getHeight());
+	}
 }
 
 

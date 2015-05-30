@@ -24,6 +24,8 @@ public class GUI extends JApplet{
 	private JButton sound;
 	private JSlider s;
 	
+	private static double SLMAX = 10000;
+	
 	
     private UniverseCanvas Drect;
 	
@@ -49,14 +51,19 @@ public class GUI extends JApplet{
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  
 		this.add(sound);   
 		
-		double slmax = 10000; 
-		s = new JSlider(JSlider.HORIZONTAL, 0, (int)slmax,1);
+		 
+		s = new JSlider(JSlider.HORIZONTAL, 0, (int)SLMAX,1);
 	    s.setPaintLabels(true);
 	    s.setBounds(0,SIZE_Y+10,APP_X,OFFSET);
+	    s.setValue((int)(SLMAX*(Drect.getCurrentexpSize()-Drect.getexpMin())/(Drect.getexpMax()-Drect.getexpMin())));
 	    s.addChangeListener(new ChangeListener(){
 			@Override
 			public synchronized void stateChanged(ChangeEvent arg0) {
-				
+				double min = Drect.getexpMin();
+				double max = Drect.getexpMax();
+				double expval = min + (max-min)*(s.getValue()/SLMAX) ;
+				Drect.setCurrentScale(expval);
+				//System.out.println(expval);
 			}	
 	    });
 	    this.add(s);

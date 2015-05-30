@@ -21,6 +21,7 @@ public class UniverseCanvas extends JPanel implements Runnable{
 	
 	public double getexpMin(){return expMin;}
 	public double getexpMax(){return expMax;}
+	public double getCurrentexpSize(){return this.currentexp_sizeX;}
 	public synchronized void setCurrentScale(double size_exponent_of10){
 		this.currentexp_sizeX = size_exponent_of10;
 	}
@@ -31,7 +32,10 @@ public class UniverseCanvas extends JPanel implements Runnable{
 		super.setBounds(0,0,size_X,size_Y);
 		//this.setBackground(Color.black);
 		this.objMng = new ObjectManager();
+		this.objMng.setCanvasinfo(sizeX,sizeY);
 		this.currentexp_sizeX = 0.5;//sqrt(10) m
+		Thread myThr = new Thread(this);
+		myThr.start();
 	}
 	
     @Override
@@ -42,16 +46,25 @@ public class UniverseCanvas extends JPanel implements Runnable{
     	g.fillRect(0, 0, size_X, size_Y);
     	g.setColor(Color.RED);
         g.drawOval(0, 0, this.size_X, this.size_Y);
-
+        //g.setClip(0, 0, 950, 550);
+        this.objMng.drawScene(g,this.currentexp_sizeX);
+        //g.setClip(0, 0, 950, 550);
         //g.drawString("BLAH", 20, 20);
         //g.drawRect(200, 200, 200, 200);
     }
 
+    private synchronized void makerun(){
+    	this.repaint();
+    }
+    
+    
 	@Override
-	public synchronized void run() { //wejscie do watku
+	public void run() { //thread entry
 		while(this.running){
+			this.makerun();
 			try {
-				Thread.sleep(3);
+				System.out.println(this.currentexp_sizeX);
+				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -1,5 +1,6 @@
 package testjavafx;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FilenameFilter;
@@ -16,6 +17,9 @@ public class ObjectManager {
 	private int Nobj;
 	//private File[] imglist;
 	private PhysicalObject[] objs;
+	
+	private int canvasX;
+	private int canvasY;
 	
 	public ObjectManager(){
 		this.Nobj = 0;
@@ -61,6 +65,20 @@ public class ObjectManager {
 		return 0;
 	}
 
+	
+	public void drawScene(Graphics g, double expscale){
+	    for(int i=0 ; i< this.Nobj;i++){
+	    	this.objs[i].drawMe(g, expscale);
+	    }
+	 }
+	
+	public void setCanvasinfo(int CX,int CY){
+		this.canvasX = CX;
+		this.canvasY = CY;
+		for(int i=0;i<this.Nobj;i++)
+			this.objs[i].setCanvasinfo(this.canvasX,this.canvasY);
+	}
+	
 }
 
 

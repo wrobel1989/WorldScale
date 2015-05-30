@@ -63,8 +63,8 @@ public class PhysicalObject {
 	}
 	
 	private boolean shouldTryToDrawThisImage(double expscale){
-		return (Math.pow(10, expscale)/this.realPositionofTheCenter.len() < 1e5 &&
-				Math.pow(10, expscale)/this.realPositionofTheCenter.len() > 1e-5);
+		return (Math.pow(10, expscale)/this.realPositionofTheCenter.len() < 1e3 &&
+				Math.pow(10, expscale)/this.realPositionofTheCenter.len() > 1e-3);
 	}
 
 	private final double clamp(double value, double BeginRange, double EndRange){//if value outside range, then ends up at some of the range value

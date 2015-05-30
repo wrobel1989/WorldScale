@@ -49,10 +49,18 @@ public class UniverseCanvas extends JPanel implements Runnable{
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
     	g.setColor(Color.BLACK);
+    	
+    	double intensity = 255.0 - clamp((255.0*(this.currentexp_sizeX - 5.0)),0.0,255.0);
+    	System.out.println(intensity);
+    	int col = ((int) (intensity)) + ((int)(0.9*intensity)) *256 + ((int)(0.8*intensity)) *256 * 256;
+    	
+    	g.setColor(new Color(col));
     	g.clearRect(0, 0, size_X, size_Y);
     	g.fillRect(0, 0, size_X, size_Y);
-    	g.setColor(Color.RED);
-        g.drawOval(0, 0, this.size_X, this.size_Y);
+    	g.setColor(Color.BLUE);
+        //g.drawOval(0, 0, this.size_X, this.size_Y);
+    	g.setClip(0, 0, size_X, size_Y);
+        this.drawTunel(g,this.currentexp_sizeX);
         //g.setClip(0, 0, 950, 550);
         this.objMng.drawScene(g,this.currentexp_sizeX);
         //g.setClip(0, 0, 950, 550);
@@ -78,13 +86,47 @@ public class UniverseCanvas extends JPanel implements Runnable{
 		while(this.running){
 			this.makerun();
 			try {
-				System.out.println(this.currentexp_sizeX);
+				//System.out.println(this.currentexp_sizeX);
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
 		
+	}
+	
+	private void drawTunel(Graphics g, double expx){
+		int Nexp = (int) expx;
+		for (int i=Nexp-3; i<= Nexp+1;i++){
+			int width  =(int) ((double)size_X * (Math.pow(10, i)/Math.pow(10, expx)));
+			int height =(int) ((double)size_Y * (Math.pow(10, i)/Math.pow(10, expx)));
+			g.drawRect(size_X/2 - width/2, size_Y/2 - height/2, width, height);
+			
+			g.drawLine(size_X/2 -(int) ((double)size_X * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_Y/2 -(int) ((double)size_Y * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_X/2 -(int) ((double)size_X * (Math.pow(10, i+1)/Math.pow(10, expx)))/2,
+					size_Y/2 -(int) ((double)size_Y * (Math.pow(10, i+1)/Math.pow(10, expx)))/2);
+			g.drawLine(size_X/2 +(int) ((double)size_X * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_Y/2 -(int) ((double)size_Y * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_X/2 +(int) ((double)size_X * (Math.pow(10, i+1)/Math.pow(10, expx)))/2,
+					size_Y/2 -(int) ((double)size_Y * (Math.pow(10, i+1)/Math.pow(10, expx)))/2);
+			g.drawLine(size_X/2 +(int) ((double)size_X * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_Y/2 +(int) ((double)size_Y * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_X/2 +(int) ((double)size_X * (Math.pow(10, i+1)/Math.pow(10, expx)))/2,
+					size_Y/2 +(int) ((double)size_Y * (Math.pow(10, i+1)/Math.pow(10, expx)))/2);
+			g.drawLine(size_X/2 -(int) ((double)size_X * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_Y/2 +(int) ((double)size_Y * (Math.pow(10, i)/Math.pow(10, expx)))/2,
+					size_X/2 -(int) ((double)size_X * (Math.pow(10, i+1)/Math.pow(10, expx)))/2,
+					size_Y/2 +(int) ((double)size_Y * (Math.pow(10, i+1)/Math.pow(10, expx)))/2);
+		}
+	}
+	
+	private final double clamp(double value, double BeginRange, double EndRange){//if value outside range, then ends up at some of the range value
+		if(value > EndRange)
+			return EndRange;
+		if(value < BeginRange)
+			return BeginRange;
+		return value;
 	}
 	
 }

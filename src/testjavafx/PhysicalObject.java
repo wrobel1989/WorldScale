@@ -67,13 +67,7 @@ public class PhysicalObject {
 				Math.pow(10, expscale)/this.realPositionofTheCenter.len() > 1e-3);
 	}
 
-	private final double clamp(double value, double BeginRange, double EndRange){//if value outside range, then ends up at some of the range value
-		if(value > EndRange)
-			return EndRange;
-		if(value < BeginRange)
-			return BeginRange;
-		return value;
-	}
+
 	
 	
 	public double getYXratio(){

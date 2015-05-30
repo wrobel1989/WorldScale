@@ -6,9 +6,11 @@ import java.awt.Button;
 import java.awt.Color;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
-public class GUI extends JApplet {
+public class GUI extends JApplet{
 
 	static int APP_X = 1100;
 	static int APP_Y = 600;
@@ -47,9 +49,16 @@ public class GUI extends JApplet {
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  
 		this.add(sound);   
 		
-		s = new JSlider(JSlider.HORIZONTAL );
+		double slmax = 10000; 
+		s = new JSlider(JSlider.HORIZONTAL, 0, (int)slmax,1);
 	    s.setPaintLabels(true);
 	    s.setBounds(0,SIZE_Y+10,APP_X,OFFSET);
+	    s.addChangeListener(new ChangeListener(){
+			@Override
+			public synchronized void stateChanged(ChangeEvent arg0) {
+				
+			}	
+	    });
 	    this.add(s);
 	    
 

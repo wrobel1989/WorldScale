@@ -14,6 +14,16 @@ public class UniverseCanvas extends JPanel implements Runnable{
 	private int size_Y;
 	private boolean running = true;
 	private ObjectManager objMng;
+	private double currentexp_sizeX;
+	
+	private double expMin = -35;
+	private double expMax = 27;
+	
+	public double getexpMin(){return expMin;}
+	public double getexpMax(){return expMax;}
+	public synchronized void setCurrentScale(double size_exponent_of10){
+		this.currentexp_sizeX = size_exponent_of10;
+	}
 	
 	public UniverseCanvas(int sizeX, int sizeY){
 		this.size_X = sizeX;
@@ -21,6 +31,7 @@ public class UniverseCanvas extends JPanel implements Runnable{
 		super.setBounds(0,0,size_X,size_Y);
 		//this.setBackground(Color.black);
 		this.objMng = new ObjectManager();
+		this.currentexp_sizeX = 0.5;//sqrt(10) m
 	}
 	
     @Override

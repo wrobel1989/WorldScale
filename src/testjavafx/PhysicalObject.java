@@ -81,7 +81,7 @@ public class PhysicalObject {
 	
 	
 	public double getYXratio(){
-		return ((double)this.img.getWidth()) / ((double)this.img.getHeight());
+		return ((double)this.img.getHeight()) / ((double)this.img.getWidth());
 	}
 }
 

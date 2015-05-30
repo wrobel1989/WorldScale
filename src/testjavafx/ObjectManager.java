@@ -87,9 +87,9 @@ public class ObjectManager {
 		
 		int Nangl = 24;
 		double ratio = this.objs[count].getYXratio();
-		double R  = 0.54 * pxh*Math.sqrt(1.0 + (ratio)*(ratio));
+		double R  = 0.52 * pxh*Math.sqrt(1.0 + (ratio)*(ratio));
 		boolean foundpos = false;
-		long counter = 0;
+		long counter = count;
 		long totalcounter = 0;
 		while(!foundpos){
 			angle = (2.0*Math.PI/Nangl)*(counter%Nangl);
@@ -103,7 +103,7 @@ public class ObjectManager {
 			if(notintersect){
 				foundpos = true;
 				pos = new vec2d(R*Math.sin(angle), R*Math.cos(angle));
-				System.out.println("Found pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy);
+				System.out.println("Found pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy+" ratio "+ratio);
 				break;
 			}
 			counter++;

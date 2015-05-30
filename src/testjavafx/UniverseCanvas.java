@@ -40,7 +40,7 @@ public class UniverseCanvas extends JPanel implements Runnable{
 		//this.setBackground(Color.black);
 		this.objMng = new ObjectManager();
 		this.objMng.setCanvasinfo(sizeX,sizeY);
-		this.currentexp_sizeX = 0.5;//sqrt(10) m
+		this.currentexp_sizeX = 7.5;//sqrt(10) m
 		Thread myThr = new Thread(this);
 		myThr.start();
 	}

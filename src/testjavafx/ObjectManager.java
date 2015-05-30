@@ -68,8 +68,8 @@ public class ObjectManager {
 
 	
 	private vec2d findNextSuitedPosition(double pxh, int count){
-		int Nangle = 6;
-		double r = 0.56 * pxh*Math.sqrt(1.0 + (this.objs[count].getYXratio())*(this.objs[count].getYXratio()));
+		int Nangle = 4;
+		double r = 0.52 * pxh*Math.sqrt(1.0 + (this.objs[count].getYXratio())*(this.objs[count].getYXratio()));
 		double angle = (2.0*Math.PI/Nangle)*(count%Nangle);
 		vec2d pos = new vec2d(r*Math.sin(angle), r*Math.cos(angle));
 		return pos;

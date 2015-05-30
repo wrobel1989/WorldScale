@@ -9,11 +9,11 @@ import java.awt.image.BufferedImage;
 
 public class PhysicalObject {
 
-	private int CanX,CanY;
+	private int CanX,CanY;//ov drawing canvas in pixels
 	
 	private BufferedImage img;
 	
-	private double realSizeX;
+	private double realSizeX;//of image in meters
 	private double realSizeY;
 	private String Descr;
 	private vec2d realPositionofTheCenter;
@@ -31,14 +31,14 @@ public class PhysicalObject {
 	}
 	
 	//canvas center is at physical (0,0) - focal point
-	public void drawMe(Graphics g, double expscale){
+	public void drawMe(Graphics g, double expscale){///10^expscale = canvas_x in meters
 		if (this.shouldTryToDrawThisImage(expscale)){
 			long imgcenterX = (long)((this.CanX / 2) * (1.0 + (this.realPositionofTheCenter.vx)/(0.5*Math.pow(10, expscale)))); 
 			long imgcenterY = (long)((this.CanY / 2) * (1.0 + (this.realPositionofTheCenter.vy)/(((((double)CanY)/((double)CanX)))*0.5*Math.pow(10, expscale))));
 			
 			int imx,imy,imwidth,imheight;//parmeters of the image on the screen after rescaling
-			imwidth = (int) ((this.realSizeX/Math.pow(10, expscale))*img.getWidth(null)) ;
-			imheight = (int) ((this.realSizeX/Math.pow(10, expscale))*img.getHeight(null)) ;
+			imwidth = (int) ((this.realSizeX/Math.pow(10, expscale))*(CanX)) ;
+			imheight = (int)(imwidth * (((double)img.getHeight(null))/((double)(img.getWidth(null)))));
 			imx = (int) (imgcenterX-imwidth/2.0);
 			imy = (int) (imgcenterY-imheight/2.0);
 			

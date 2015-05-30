@@ -3,18 +3,18 @@ package testjavafx;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-
-
 public class PhysicalObject {
 
 	private Image img;
 	private double realSizeX;
+	private double realSizeY;
 	private String Descr;
 	private vec2d realPositionofTheCenter;
 	
 	public PhysicalObject(BufferedImage img, double rs, String dsc, vec2d rpc){
 		this.img = img;
 		this.realSizeX = rs;
+		this.realSizeY = rs * (((double)img.getHeight())/((double)img.getWidth()));
 		this.realPositionofTheCenter = new vec2d(rpc.vx,rpc.vy);
 		this.Descr = dsc;
 	}

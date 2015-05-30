@@ -51,7 +51,8 @@ public class ObjectManager {
 
 		    String out_decs = matcher2.find() ? matcher2.group() : "";
 		        
-		    vec2d pos = new vec2d(phsizeX, phsizeX);
+		    vec2d pos;
+		    pos = this.findNextSuitedPosition(phsizeX,phsizeX,i);
 		    BufferedImage img = null;
 			try {
 				img = ImageIO.read(imglist[i]);
@@ -63,6 +64,11 @@ public class ObjectManager {
 		return 0;
 	}
 
+	
+	private vec2d findNextSuitedPosition(double pxh, double phy, int count){
+		vec2d pos = new vec2d(pxh, phy);
+		return pos;
+	}
 	
 	public void drawScene(Graphics g, double expscale){
 	    for(int i=0 ; i< this.Nobj;i++){

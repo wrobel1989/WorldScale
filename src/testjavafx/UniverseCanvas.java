@@ -66,7 +66,7 @@ public class UniverseCanvas extends JPanel implements Runnable{
         //g.setClip(0, 0, 950, 550);
         //g.drawString("BLAH", 20, 20);
         //g.drawRect(200, 200, 200, 200);
-        g.setColor(Color.GREEN);
+        g.setColor(new Color(0x007700));
         //g.drawLine(0,0, 500,500);
         double fracb = 0.35;
         double frace = 1-fracb;

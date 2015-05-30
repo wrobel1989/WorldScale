@@ -11,10 +11,10 @@ import javax.swing.event.ChangeListener;
 
 public class GUI extends JApplet{
 
-	static int APP_X = 1100;
+	static int APP_X = 800;
 	static int APP_Y = 600;
 	
-	static int SIZE_X = 950;//rozmiar canvasu
+	static int SIZE_X = 650;//rozmiar canvasu
 	static int SIZE_Y = 550;
 	static int OFFSET= 25;
 	

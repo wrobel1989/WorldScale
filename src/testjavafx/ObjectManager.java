@@ -50,8 +50,6 @@ public class ObjectManager {
 		    Matcher matcher2 = pattern2.matcher(name_raw2);
 
 		    String out_decs = matcher2.find() ? matcher2.group() : "";
-
-		    int y=0;
 		        
 		    vec2d pos = new vec2d(phsizeX, phsizeX);
 		    BufferedImage img = null;

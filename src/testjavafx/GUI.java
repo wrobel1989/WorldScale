@@ -31,7 +31,7 @@ public class GUI extends JApplet{
 	
 	public void init(){
 		this.setSize(APP_X, APP_Y);
-		Drect = new UniverseCanvas(this.SIZE_X,this.SIZE_Y);
+		Drect = new UniverseCanvas(this.SIZE_X,this.SIZE_Y,this.APP_X,this.APP_Y);
 		this.setBackground(Color.WHITE);
 		System.out.println("QQQqs");
 		//this.Drect.setBounds(0, 0, SIZE_Y, SIZE_Y);

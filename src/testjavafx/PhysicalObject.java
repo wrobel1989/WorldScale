@@ -18,6 +18,16 @@ public class PhysicalObject {
 	private String Descr;
 	private vec2d realPositionofTheCenter;
 	
+	public String getDescr(){
+		return this.Descr;
+	}
+	
+	public doubleRect getRealPos(){
+		doubleRect p = new doubleRect(this.realPositionofTheCenter.vx-this.realSizeX/2,this.realPositionofTheCenter.vy-this.realSizeY/2,
+				this.realSizeX,this.realSizeY);
+		return p;
+	}
+	
 	public PhysicalObject(BufferedImage img, double rs, String dsc, vec2d rpc){
 		this.img = img;
 		this.realSizeX = rs;
@@ -78,7 +88,24 @@ public class PhysicalObject {
 
 
 
-
+class doubleRect{
+	
+	public double x,y,w,h;
+	doubleRect(double x, double y, double w, double h){
+		this.x=x;
+		this.y=y;
+		this.h=h;
+		this.w=w;
+	}
+	
+	public boolean doesintersect(doubleRect nre){
+		boolean intersect = true;
+		if (((nre.x<x && nre.x+nre.w < x) || (nre.x>x+w && nre.x+nre.w > x+w)) || 
+				((nre.y<y && nre.y+nre.h < y) || (nre.y>y+h && nre.y+nre.h > y+h)) )
+			intersect = false;
+		return intersect;
+	}
+}
 
 
 

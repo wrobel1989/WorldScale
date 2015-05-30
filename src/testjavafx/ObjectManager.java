@@ -63,15 +63,57 @@ public class ObjectManager {
 			this.objs[i].setRealPos(pos);
 		    
 		}
+		
+		
+		for(int i=0;i<this.Nobj;i++){
+			for (int j=0;j<i;j++){
+				doubleRect r1 = this.objs[i].getRealPos();
+				doubleRect r2 = this.objs[j].getRealPos();
+				if(r1.doesintersect(r2)){
+					System.out.println("COOOOLISION!!!" + " between :" + this.objs[i].getDescr() + " and " + this.objs[j].getDescr());
+				}
+			}
+		}
+		
 		return 0;
 	}
 
 	
 	private vec2d findNextSuitedPosition(double pxh, int count){
-		int Nangle = 4;
+		int Nangle = 6;
 		double r = 0.52 * pxh*Math.sqrt(1.0 + (this.objs[count].getYXratio())*(this.objs[count].getYXratio()));
 		double angle = (2.0*Math.PI/Nangle)*(count%Nangle);
 		vec2d pos = new vec2d(r*Math.sin(angle), r*Math.cos(angle));
+		
+		int Nangl = 24;
+		double ratio = this.objs[count].getYXratio();
+		double R  = 0.54 * pxh*Math.sqrt(1.0 + (ratio)*(ratio));
+		boolean foundpos = false;
+		long counter = 0;
+		long totalcounter = 0;
+		while(!foundpos){
+			angle = (2.0*Math.PI/Nangl)*(counter%Nangl);
+			doubleRect trect = new doubleRect(R*Math.sin(angle)-pxh/2.0,R*Math.cos(angle)-0.5*pxh*this.objs[count].getYXratio(),pxh,pxh*this.objs[count].getYXratio());
+			boolean notintersect = true;
+			for (int i=0; i<count;i++){
+				doubleRect el = this.objs[i].getRealPos();
+				if(trect.doesintersect(el))
+					notintersect = false;
+			}
+			if(notintersect){
+				foundpos = true;
+				pos = new vec2d(R*Math.sin(angle), R*Math.cos(angle));
+				System.out.println("Found pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy);
+				break;
+			}
+			counter++;
+			totalcounter++;
+			if(counter==Nangl){
+				counter = 0;
+				R = R * 1.01;
+			}
+			
+		}
 		return pos;
 	}
 	

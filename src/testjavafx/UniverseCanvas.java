@@ -51,7 +51,7 @@ public class UniverseCanvas extends JPanel implements Runnable{
     	g.setColor(Color.BLACK);
     	
     	double intensity = 255.0 - clamp((255.0*(this.currentexp_sizeX - 5.0)),0.0,255.0);
-    	System.out.println(intensity);
+    	//System.out.println(intensity);
     	int col = ((int) (intensity)) + ((int)(0.9*intensity)) *256 + ((int)(0.8*intensity)) *256 * 256;
     	
     	g.setColor(new Color(col));

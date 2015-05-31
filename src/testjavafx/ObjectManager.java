@@ -117,6 +117,7 @@ public class ObjectManager {
 				break;
 			}
 		}
+		System.out.println("Nobj "+this.Nobj);
 		return pos;
 	}
 	

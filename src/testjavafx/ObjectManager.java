@@ -83,7 +83,7 @@ public class ObjectManager {
 		int Nangle = 6;
 		double r = 0.52 * pxh*Math.sqrt(1.0 + (this.objs[count].getYXratio())*(this.objs[count].getYXratio()));
 		double angle = (2.0*Math.PI/Nangle)*(count%Nangle);
-		vec2d pos = new vec2d(r*Math.sin(angle), r*Math.cos(angle));
+		vec2d pos = new vec2d(r*Math.cos(angle), r*Math.sin(angle));
 		
 		int Nangl = 24;
 		double ratio = this.objs[count].getYXratio();
@@ -93,7 +93,7 @@ public class ObjectManager {
 		long totalcounter = 0;
 		while(!foundpos){
 			angle = (2.0*Math.PI/Nangl)*(counter%Nangl);
-			doubleRect trect = new doubleRect(R*Math.sin(angle)-pxh/2.0,R*Math.cos(angle)-0.5*pxh*this.objs[count].getYXratio(),pxh,pxh*this.objs[count].getYXratio());
+			doubleRect trect = new doubleRect(R*Math.cos(angle)-pxh/2.0,R*Math.sin(angle)-0.5*pxh*this.objs[count].getYXratio(),pxh,pxh*this.objs[count].getYXratio());
 			boolean notintersect = true;
 			for (int i=0; i<count;i++){
 				doubleRect el = this.objs[i].getRealPos();
@@ -102,7 +102,7 @@ public class ObjectManager {
 			}
 			if(notintersect){
 				foundpos = true;
-				pos = new vec2d(R*Math.sin(angle), R*Math.cos(angle));
+				pos = new vec2d(R*Math.cos(angle), R*Math.sin(angle));
 				System.out.println("Found pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy+" ratio "+ratio);
 				break;
 			}

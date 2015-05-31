@@ -89,7 +89,7 @@ public class ObjectManager {
 		double ratio = this.objs[count].getYXratio();
 		double R  = 0.52 * pxh*Math.sqrt(1.0 + (ratio)*(ratio));
 		boolean foundpos = false;
-		long counter = count;
+		long counter = 0;
 		long totalcounter = 0;
 		while(!foundpos){
 			angle = (2.0*Math.PI/Nangl)*(counter%Nangl);
@@ -112,8 +112,9 @@ public class ObjectManager {
 				counter = 0;
 				R = R * 1.01;
 			}
-			if(totalcounter > 900000){
+			if(totalcounter > 9000000){
 				System.out.println("Too many iterations BREAK, pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy+" ratio "+ratio);
+				System.out.println("REct rx " + trect.x + " ry " + trect.y + " w "+ trect.w + " h "+trect.h + " R: "+R + " counter "+ counter);
 				break;
 			}
 		}

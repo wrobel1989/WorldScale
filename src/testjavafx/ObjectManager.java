@@ -112,7 +112,10 @@ public class ObjectManager {
 				counter = 0;
 				R = R * 1.01;
 			}
-			
+			if(totalcounter > 900000){
+				System.out.println("Too many iterations BREAK, pos " + this.objs[count].getDescr() + " angle : "+angle+" posx "+pos.vx+ " posy "+pos.vy+" ratio "+ratio);
+				break;
+			}
 		}
 		return pos;
 	}

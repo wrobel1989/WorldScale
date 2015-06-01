@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 public class UniverseCanvas extends JPanel implements Runnable{
 
 	
-	private int langSwitch = 0; //0-eng, 1-pl
+	
 	
 	
 	private int size_X;
@@ -100,6 +100,10 @@ public class UniverseCanvas extends JPanel implements Runnable{
 			}
 		}
 		
+	}
+	
+	public void setLangSwitch(int lswitch){
+		this.objMng.setLangSwitch(lswitch);
 	}
 	
 	private void drawTunel(Graphics g, double expx){

@@ -24,6 +24,7 @@ public class ObjectManager {
 	
 	private String drawDescr;
 	private int descrX=-666, descrY=-666;
+	private int langSwitch = 0; //0-eng, 1-pl
 	
 	public ObjectManager(){
 		this.Nobj = 0;
@@ -97,6 +98,10 @@ public class ObjectManager {
 		}
 	}
 	
+	public void setLangSwitch(int lswitch){
+		this.langSwitch = lswitch;
+	}
+	
 	
 	private vec2d findNextSuitedPosition(double pxh, int count){
 		int Nangle = 6;
@@ -146,8 +151,22 @@ public class ObjectManager {
 	    	this.objs[i].drawMe(g, expscale);
 	    }
 	    if(this.descrX >= 0 && this.descrY >= 0){
-	    	g.setColor(new Color(0x007777));
-	    	g.drawString(this.drawDescr, this.descrX, this.descrY);
+	    	g.setColor(new Color(0xff0000));
+	    	String out=this.drawDescr;
+	    	if(this.langSwitch == 0 ){
+	    		Pattern pattern = Pattern.compile("(?<=#D).*(?=QQ)");
+	    		Matcher matcher = pattern.matcher(this.drawDescr);
+		        String out_phsize = (matcher.find() ? matcher.group(0) : "").replaceAll("#p", ".");
+		        if(out_phsize != "")
+		        	out = out_phsize;
+		    }else{
+		    	Pattern pattern = Pattern.compile("(?<=QQ).*(?=\\.png)");
+	    		Matcher matcher = pattern.matcher(this.drawDescr);
+		        String out_phsize = (matcher.find() ? matcher.group(0) : "").replaceAll("#p", ".");
+		        if(out_phsize != "")
+		        	out = out_phsize;
+		    }
+	    	g.drawString(out, this.descrX, this.descrY);
 	    }
 	 }
 	

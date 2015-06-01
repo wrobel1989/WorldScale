@@ -60,6 +60,7 @@ public class GUI extends JApplet{
 	    	     double min = Drect.getexpMin();
 				 double max = Drect.getexpMax();
 	    	     double expval = min + (max-min)*(s.getValue()/SLMAX) ;
+	    	     Drect.setLangSwitch(pl.isSelected() ? 1 : 0);
 	    	     Drect.setMousecoords(xm, ym, expval);
 	    	   }
 

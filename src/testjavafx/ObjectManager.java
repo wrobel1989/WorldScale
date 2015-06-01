@@ -154,15 +154,15 @@ public class ObjectManager {
 	    	g.setColor(new Color(0xff0000));
 	    	String out=this.drawDescr;
 	    	if(this.langSwitch == 0 ){
-	    		Pattern pattern = Pattern.compile("(?<=#D).*(?=QQ)");
+	    		Pattern pattern = Pattern.compile(".*?(?=QQ)");
 	    		Matcher matcher = pattern.matcher(this.drawDescr);
-		        String out_phsize = (matcher.find() ? matcher.group(0) : "").replaceAll("#p", ".");
+		        String out_phsize = (matcher.find() ? matcher.group(0) : "");
 		        if(out_phsize != "")
 		        	out = out_phsize;
 		    }else{
-		    	Pattern pattern = Pattern.compile("(?<=QQ).*(?=\\.png)");
+		    	Pattern pattern = Pattern.compile("(?<=QQ).*");
 	    		Matcher matcher = pattern.matcher(this.drawDescr);
-		        String out_phsize = (matcher.find() ? matcher.group(0) : "").replaceAll("#p", ".");
+		        String out_phsize = (matcher.find() ? matcher.group(0) : "");
 		        if(out_phsize != "")
 		        	out = out_phsize;
 		    }

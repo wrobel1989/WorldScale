@@ -18,9 +18,9 @@ public class GUI extends JApplet{
 	static int SIZE_Y = 550;
 	static int OFFSET= 25;
 	
-	private JButton pl;
-	private JButton eng;
-	private JButton sound;
+	private JRadioButton pl;
+	private JRadioButton eng;
+	private JCheckBox sound;
 	private JSlider s;
 	
 	private static double SLMAX = 10000;
@@ -39,14 +39,14 @@ public class GUI extends JApplet{
 		this.Drect.repaint();
 		this.setVisible(true);
 		this.setLayout(null);
-		pl = new JButton("PL");// przycisk
+		pl = new JRadioButton("PL");// przycisk
 		pl.setBounds(SIZE_X,0,OFFSET*3,OFFSET*2);
 		this.add(pl);
-		eng = new JButton("ENG");// przycisk
+		eng = new JRadioButton("ENG");// przycisk
 		eng.setBounds(SIZE_X+3*OFFSET,0,OFFSET*3,OFFSET*2);
 		this.add(eng);
 		
-		sound= new JButton("Sound");// przycisk                 
+		sound= new JCheckBox("Sound");// przycisk                 
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  
 		this.add(sound);   
 		

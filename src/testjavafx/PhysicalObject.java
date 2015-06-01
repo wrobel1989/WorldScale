@@ -78,6 +78,13 @@ public class PhysicalObject {
 	}
 
 
+	public boolean isXYWithinObject(double XX, double YY){
+		boolean is = false;
+		if(XX>this.realPositionofTheCenter.vx-this.realSizeX/2.0 && XX<this.realPositionofTheCenter.vx+this.realSizeX/2.0 &&
+				YY>this.realPositionofTheCenter.vy-this.realSizeY/2.0 && YY<this.realPositionofTheCenter.vy+this.realSizeY/2.0)
+			is = true;
+		return is;
+	}
 	
 	
 	public double getYXratio(){

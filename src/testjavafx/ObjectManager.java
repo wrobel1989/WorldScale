@@ -1,5 +1,6 @@
 package testjavafx;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,6 +21,9 @@ public class ObjectManager {
 	
 	private int canvasX;
 	private int canvasY;
+	
+	private String drawDescr;
+	private int descrX=-666, descrY=-666;
 	
 	public ObjectManager(){
 		this.Nobj = 0;
@@ -79,6 +83,21 @@ public class ObjectManager {
 	}
 
 	
+	public void setMousecoords(int xm, int ym, double expval){
+		double realx = (((double)xm - canvasX/2.0)/((double)0.5*canvasX)) * 0.5 * Math.pow(10,expval) ;
+		double realy = (((double)ym - canvasY/2.0)/((double)0.5*canvasY)) * 0.5 * (((double)canvasY)/((double)canvasX)) * Math.pow(10,expval) ;
+		for(int i=0;i<this.Nobj;i++){
+			if(this.objs[i].isXYWithinObject(realx, realy)){
+				//System.out.println(this.objs[i].getDescr());
+				this.descrX = xm;
+				this.descrY = ym;
+				this.drawDescr = this.objs[i].getDescr();
+				break;
+			}
+		}
+	}
+	
+	
 	private vec2d findNextSuitedPosition(double pxh, int count){
 		int Nangle = 6;
 		double r = 0.52 * pxh*Math.sqrt(1.0 + (this.objs[count].getYXratio())*(this.objs[count].getYXratio()));
@@ -125,6 +144,10 @@ public class ObjectManager {
 	public void drawScene(Graphics g, double expscale){
 	    for(int i=0 ; i< this.Nobj;i++){
 	    	this.objs[i].drawMe(g, expscale);
+	    }
+	    if(this.descrX >= 0 && this.descrY >= 0){
+	    	g.setColor(new Color(0x007777));
+	    	g.drawString(this.drawDescr, this.descrX, this.descrY);
 	    }
 	 }
 	

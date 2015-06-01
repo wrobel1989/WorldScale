@@ -3,6 +3,8 @@ package testjavafx;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -45,6 +47,26 @@ public class GUI extends JApplet{
 		eng = new JRadioButton("ENG");// przycisk
 		eng.setBounds(SIZE_X+3*OFFSET,0,OFFSET*3,OFFSET*2);
 		this.add(eng);
+		eng.setSelected(true);
+	
+		ButtonGroup group = new ButtonGroup();
+	    group.add(pl);
+	    group.add(eng);
+	    
+	    Drect.addMouseMotionListener(new MouseMotionListener(){
+	    	   public void mouseMoved(MouseEvent e) {
+	    	     int xm = e.getX();
+	    	     int ym = e.getY();
+	    	     double min = Drect.getexpMin();
+				 double max = Drect.getexpMax();
+	    	     double expval = min + (max-min)*(s.getValue()/SLMAX) ;
+	    	     Drect.setMousecoords(xm, ym, expval);
+	    	   }
+
+	    	    public void mouseDragged(MouseEvent e) {
+	    	       
+	    	    }
+	    });
 		
 		sound= new JCheckBox("Sound");// przycisk                 
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  

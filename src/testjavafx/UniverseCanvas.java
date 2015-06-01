@@ -12,6 +12,9 @@ import javax.swing.JPanel;
 public class UniverseCanvas extends JPanel implements Runnable{
 
 	
+	private int langSwitch = 0; //0-eng, 1-pl
+	
+	
 	private int size_X;
 	private int size_Y;
 	private int APPX, APPY;
@@ -31,10 +34,14 @@ public class UniverseCanvas extends JPanel implements Runnable{
 		this.currentexp_sizeX = size_exponent_of10;
 	}
 	
+	public void setMousecoords(int xm, int ym, double expval){
+		this.objMng.setMousecoords(xm,ym,expval);
+	}
+	
 	public UniverseCanvas(int sizeX, int sizeY, int APPX, int APPY){
-		this.size_X = sizeX;
+		this.size_X = sizeX;//canvas
 		this.size_Y = sizeY;
-		this.APPX = APPX;
+		this.APPX = APPX;//whole app
 		this.APPY = APPY;
 		super.setBounds(0,0,size_X,size_Y);
 		//this.setBackground(Color.black);

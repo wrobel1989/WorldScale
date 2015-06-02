@@ -27,7 +27,7 @@ public class GUI extends JApplet{
 	
 	private static double SLMAX = 10000;
 	
-	
+	private Player mPl;
     private UniverseCanvas Drect;
 	
 	public void init(){
@@ -69,9 +69,18 @@ public class GUI extends JApplet{
 	    	    }
 	    });
 		
-		sound= new JCheckBox("Sound");// przycisk                 
+	    sound= new JCheckBox("Sound");// przycisk                 
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  
 		this.add(sound);   
+		this.mPl = new Player("sound.wav");
+		sound.addChangeListener(new ChangeListener(){
+
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				mPl.SetPlaying(sound.isSelected());
+			}
+			
+		});  
 		
 		 
 		s = new JSlider(JSlider.HORIZONTAL, 0, (int)SLMAX,1);

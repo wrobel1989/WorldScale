@@ -166,7 +166,7 @@ public class ObjectManager {
 		        if(out_phsize != "")
 		        	out = out_phsize;
 		    }
-	    	g.drawString(out, this.descrX, this.descrY);
+	    	g.drawString(out.replaceAll("_", " "), this.descrX, this.descrY);
 	    }
 	 }
 	

@@ -72,7 +72,7 @@ public class GUI extends JApplet{
 	    sound= new JCheckBox("Sound");// przycisk                 
 		sound.setBounds(SIZE_X,OFFSET*2,OFFSET*6,OFFSET*2);  
 		this.add(sound);   
-		this.mPl = new Player("sound.wav");
+		this.mPl = new Player("../res/sound.wav");
 		sound.addChangeListener(new ChangeListener(){
 
 			@Override

@@ -34,7 +34,7 @@ public class ObjectManager {
 	
 	
 	private int initObj(){
-		File folder = new File(".");
+		File folder = new File("../res/");
 		File[] imglist = folder.listFiles(new FilenameFilter() {
 		    public boolean accept(File dir, String name) {
 		        return name.toLowerCase().endsWith(".png");

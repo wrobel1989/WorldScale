@@ -27,7 +27,7 @@ public class ObjectManager {
 	private int langSwitch = 0; // 0-eng, 1-pl
 
 	public int load() {
-		File folder = new File(".");
+		File folder = new File("../res");
 		File[] images = folder.listFiles(new FilenameFilter() {
 
 			public boolean accept(File dir, String name) {

@@ -40,7 +40,7 @@ public class UniverseApplet extends JApplet {
 	private ObjectManager manager = new ObjectManager();
 	
 	public void loadResources() throws Exception {
-		musicPlayer = new Player("sound.wav");
+		musicPlayer = new Player("../res/sound.wav");
 		manager.load();
 	}
 	

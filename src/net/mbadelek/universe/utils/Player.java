@@ -12,7 +12,7 @@ public class Player {
 	private Clip clip;
 	private AudioInputStream soundIn;
 
-	public Player(String wavname) throws Exception {
+	public Player(String wavname) throws Exception {//music
 		File soundFile = new File(wavname);
 		soundIn = AudioSystem.getAudioInputStream(soundFile);
 		clip = (Clip) AudioSystem.getLine(new DataLine.Info(Clip.class, soundIn.getFormat()));

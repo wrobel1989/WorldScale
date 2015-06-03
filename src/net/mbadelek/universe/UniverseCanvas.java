@@ -12,9 +12,7 @@ import net.mbadelek.universe.utils.Utils;
 
 public class UniverseCanvas extends JComponent {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 7638330588391745923L;
 	
 	private int size_X;

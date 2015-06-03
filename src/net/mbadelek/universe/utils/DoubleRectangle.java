@@ -1,6 +1,6 @@
 package net.mbadelek.universe.utils;
 
-public class DoubleRectangle {
+public class DoubleRectangle {//rectangle collision
 
 	private double x, y, width, height;
 

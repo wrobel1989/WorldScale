@@ -1,1 +1,2 @@
 info repo : https://github.com/wrobel1989/WorldScale.git
+to compile, run : "ant compile", then "cd bin" and "java testjavafx.GUI" to run

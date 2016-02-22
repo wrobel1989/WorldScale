@@ -103,4 +103,17 @@ public class GUI extends JApplet{
 		                                                     
 	}
 	
+	public static void main(String[] args){
+	  JFrame frame = new JFrame("test");
+	  frame.setSize(APP_X, APP_Y);
+	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  frame.setVisible(true);
+	  GUI mg = new GUI();
+	  frame.add(mg);
+	  mg.init();
+	}
+	
 }
+
+
+
